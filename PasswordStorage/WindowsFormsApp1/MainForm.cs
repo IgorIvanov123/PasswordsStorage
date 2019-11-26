@@ -83,7 +83,12 @@ namespace WindowsFormsApp1
         {
             ChanginForm changinForm = new ChanginForm();
             DialogResult dr1 = new DialogResult();
-            int i = dataGridView1.CurrentRow.Index;
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Выбирите элемент!");
+                return;
+            }
+            int i = dataGridView1.CurrentRow.Index;         
             changinForm.resourseTBox.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
             changinForm.loginTBox.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
             changinForm.passTBox.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
@@ -115,7 +120,7 @@ namespace WindowsFormsApp1
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow.Index == -1)
+            if (dataGridView1.Rows.Count == 0)
             {
                 MessageBox.Show("Выберите элемет!");
             }
